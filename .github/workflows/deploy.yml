@@ -1,0 +1,26 @@
+name: Deploy Portfolio
+
+on:
+push:
+branches:
+- main
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+```
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v3
+
+  - name: Show files (debug)
+    run: ls -R
+
+  - name: Install backend dependencies
+    working-directory: backend
+    run: npm install
+
+  - name: Success message
+    run: echo "CI/CD Working ✅"
+```
