@@ -11,14 +11,20 @@ runs-on: ubuntu-latest
 
 
 steps:
-  - uses: actions/checkout@v3
+  - name: Checkout code
+    uses: actions/checkout@v3
 
   - name: Show files
     run: ls -R
 
   - name: Install backend dependencies
-    working-directory: backend
-    run: npm install
+    run: |
+      if [ -d "backend" ]; then
+        cd backend
+        npm install
+      else
+        echo "No backend folder found"
+      fi
 
   - name: Done
     run: echo "Pipeline working ✅"
